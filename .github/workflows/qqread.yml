@@ -1,7 +1,4 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: 企鹅阅读
+name: 企鹅读书
 
 on:
   workflow_dispatch:
@@ -9,34 +6,35 @@ on:
     - cron: '*/11 * * * *'
   watch:
     types: [started]
-
+env:
+  TZ: Asia/Shanghai
 jobs:
   build:
-
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
         with:
-          repository: qingcher/Jd-syn
-          node-version: 10.x
-      - name: npm install
-        run: |
-          npm install
-          npm install got download tough-cookie
-      - name: ' 运行 【企鹅阅读】'
-        run: |
-          node qqyd.js
+          python-version: 3.8
+         
+      - name: 'Install requirements'
+        run: pip install -r ./requirements.txt 
+        
+      - name: '运行【企鹅读书】' 
+        run: python3 qqread.py 
         env:
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+            QQREADHEADERS: ${{ secrets.QQREADHEADERS }}
+            QQREADBODYS: ${{ secrets.QQREADBODYS }}
+            QQREADTIMEURL: ${{ secrets.QQREADTIMEURL }}
+            NOTIFYTYPE: ${{ secrets.NOTIFYTYPE }}
+            NOTIFYCFG: ${{ secrets.NOTIFYCFG }}
+            DRAWAMOUNT: ${{ secrets.DRAWAMOUNT }}
+            SCKEY: ${{ secrets.SCKEY }}
+            BARK: ${{ secrets.BARK }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}
 
-
-      -
