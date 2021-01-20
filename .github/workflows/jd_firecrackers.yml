@@ -10,7 +10,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: bean_sgin
+    types: b
 jobs:
   build:
 
@@ -37,7 +37,7 @@ jobs:
           npm install
       - name: '运行 【集鞭炮】'
         run: |
-          node firecrackers.js
+          node jd_firecrackers.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
