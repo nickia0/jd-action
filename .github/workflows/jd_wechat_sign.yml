@@ -36,7 +36,7 @@ jobs:
           npm install
       - name: '运行 【粉丝有礼】'
         run: |
-          node jd_wechat_sign.js
+          node wechat_sign.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
