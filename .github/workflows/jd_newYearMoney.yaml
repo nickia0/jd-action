@@ -19,6 +19,8 @@ jobs:
         steps:
             - name: 拉取代码
               uses: actions/checkout@v2
+              with:
+                 repository: qingcher/Jd-syn
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:
