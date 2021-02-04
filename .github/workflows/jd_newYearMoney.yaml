@@ -6,7 +6,7 @@ name: 京东压岁钱💰
 on:
     workflow_dispatch:
     schedule:
-        - cron: "20 6,16 * * *"
+        - cron: "0 3/3 * * *"
     watch:
         types: [started]
     repository_dispatch:
