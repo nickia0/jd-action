@@ -12,7 +12,7 @@ let message = '', subTitle = '', option = {};
 let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
 const JD_API_HOST = 'https://api.m.jd.com';
 let randomCount = $.isNode() ? 20 : 5;
-const BUY_JOY_LEVEL = 7 // 默认购买的joy等级
+const BUY_JOY_LEVEL = 30 // 默认购买的joy等级
 const MERGE_WAIT = process.env.MERGE_WAIT ? process.env.MERGE_WAIT : 1000 * 60 // 默认1分钟一次购买合并
 const PRODUCE_WAIT = process.env.PRODUCE_WAIT ? process.env.PRODUCE_WAIT : 1000 // 默认1秒一次模拟挂机
 
