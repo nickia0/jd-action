@@ -6,7 +6,7 @@ name: 取关商品
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 15 * * *'
+    - cron: "100 * * * *"
   watch:
         types: started
   repository_dispatch:
